@@ -75,7 +75,7 @@ def main(args):
 
         model = CDS(enc, dec, model_config.prot_pad_idx, model_config.cds_pad_idx, device)
 
-        model.load_state_dict(torch.load(ckpt_path, map_location=device))
+        model.load_state_dict(torch.load(ckpt_path, map_location=device, weights_only=True))
         model.to(device)
         model.eval()
         model.gen(protein_seq, prot_vocab, cds_vocab, device)
